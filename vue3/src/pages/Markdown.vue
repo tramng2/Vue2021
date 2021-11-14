@@ -7,6 +7,7 @@
           class="w-full h-full"
           :value="input"
           @input="update"
+          ref="textArea"
         ></textarea>
       </article>
       <article class="w-1/2 border bg-gray-100" v-html="markText"></article>
@@ -24,6 +25,9 @@ export default {
     return {
       input: "",
     };
+  },
+  mounted() {
+    this.$refs.textArea.focus();
   },
   methods: {
     update(e) {

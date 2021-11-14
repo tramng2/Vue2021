@@ -14,7 +14,12 @@
         </li>
       </ul>
       <form @submit.prevent="handleAdd" class="mt-10">
-        <input v-model="input" placeholder="type" class="border rounded" />
+        <input
+          v-model="input"
+          placeholder="type"
+          class="border rounded"
+          ref="newInputRef"
+        />
         <button type="submit">add</button>
       </form>
     </div>
@@ -22,31 +27,43 @@
 </template>
 
 <script>
+import { computed, onMounted, ref } from "vue";
 export default {
   name: "HerosApp",
+  setup() {
+    const newInputRef = ref("");
+    const input = ref("");
+    const heros = ref(["superman", "ironman", "captain"]);
+
+    function handleRemove(item) {
+      heros.value = heros.value.filter((el) => el !== item);
+    }
+
+    function handleAdd() {
+      if (input.value) {
+        heros.value.push(input.value);
+        input.value = "";
+      }
+    }
+
+    const heroCount = computed({
+      get: () => heros.value.length,
+    });
+
+    onMounted(() => {
+      newInputRef.value.focus();
+    });
+
+    return { heros, input, handleRemove, handleAdd, newInputRef, heroCount };
+  },
   data() {
     return {
-      input: "",
       fname: "tram",
       lname: "nguyen",
-      heros: ["superman", "ironman", "captain"],
     };
   },
-  methods: {
-    handleAdd() {
-      if (this.input) {
-        this.heros.push(this.input);
-        this.input = "";
-      }
-    },
-    handleRemove(item) {
-      this.heros = this.heros.filter((el) => el !== item);
-    },
-  },
+
   computed: {
-    heroCount() {
-      return this.heros.length;
-    },
     fullname: {
       get() {
         return `${this.fname} ${this.lname}`;

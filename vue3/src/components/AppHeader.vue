@@ -15,12 +15,33 @@
     <router-link class="mx-2" to="/hero"> About</router-link>
     <router-link class="mx-2" to="/markdown"> Markdown</router-link>
     <router-link class="mx-2" to="/slider"> Slider Carousel</router-link>
+    <router-link class="mx-2" to="/calculator"> Calculator</router-link>
+    <button v-if="!isLoggedIn" @click="$emit('open-login-modal')" class="mx-2">
+      Login
+    </button>
+    <button v-else @click="logout" class="mx-2">Logout</button>
   </nav>
 </template>
 
 <script>
+import { getAuth, signOut } from "firebase/auth";
+
 export default {
   name: "AppHeader",
+  emits: ["open-login-modal"],
+  props: { isLoggedIn: { type: Boolean, required: true } },
+  methods: {
+    logout() {
+      const auth = getAuth();
+      signOut(auth)
+        .then(() => {
+          console.log("user sign out");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
 };
 </script>
 
