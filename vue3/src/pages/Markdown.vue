@@ -17,16 +17,17 @@
 
 <script>
 import marked from "marked";
-import debounce from "../utilities/mixins/debounce";
+import useDebounce from "../utilities/composition/useDebounce";
 export default {
   name: "Markdown",
-  mixins: [debounce],
   data() {
     return {
       input: "",
+      debounce: "",
     };
   },
   mounted() {
+    this.debounce = useDebounce();
     this.$refs.textArea.focus();
   },
   methods: {
@@ -34,6 +35,7 @@ export default {
       const task = () => {
         this.input = e.target.value;
       };
+
       this.debounce(task, 500);
     },
   },

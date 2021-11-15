@@ -10,12 +10,13 @@
       py-2
     "
   >
-    <router-link class="mx-2" to="/"> Home</router-link>
+    <router-link class="mx-2" to="/">Home</router-link>
     <router-link class="mx-2" to="/calendar">Calendar</router-link>
-    <router-link class="mx-2" to="/hero"> About</router-link>
-    <router-link class="mx-2" to="/markdown"> Markdown</router-link>
-    <router-link class="mx-2" to="/slider"> Slider Carousel</router-link>
-    <router-link class="mx-2" to="/calculator"> Calculator</router-link>
+    <router-link class="mx-2" to="/hero">About</router-link>
+    <router-link class="mx-2" to="/markdown">Markdown</router-link>
+    <router-link class="mx-2" to="/slider">Slider</router-link>
+    <router-link class="mx-2" to="/calculator">Calculator</router-link>
+    <router-link class="mx-2" to="/modal">Modal</router-link>
     <button v-if="!isLoggedIn" @click="$emit('open-login-modal')" class="mx-2">
       Login
     </button>

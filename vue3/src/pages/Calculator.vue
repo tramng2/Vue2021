@@ -114,6 +114,7 @@
 
 <script>
 import { ref } from "vue";
+import useWindowEvent from "../utilities/composition/useWindowEvent";
 export default {
   setup() {
     const operations = ["+", "-", "*", "/"];
@@ -152,12 +153,11 @@ export default {
       prevNum.value = "";
       selectedOperation.value = "";
     }
+    const handleKeydown = (e) => pressed(e.key);
+    useWindowEvent("keydown", handleKeydown);
 
     return { currentNum, pressed, selectedOperation, prevNum };
   },
 };
 </script>
-
 <style></style>
-© 2021 GitHub, Inc. Terms Privacy Security Status Docs Contact GitHub Pricing
-API Training Blog About Loading complete
