@@ -6,6 +6,7 @@ import Markdown from "./pages/Markdown.vue";
 import Slider from "./pages/Slider.vue";
 import Calculator from "./pages/Calculator.vue";
 import Modal from "./pages/ReuseableModal.vue";
+import Chat from "./pages/Chat.vue";
 
 const routes = [
   { path: "/", component: Home },
@@ -15,6 +16,7 @@ const routes = [
   { path: "/slider", component: Slider },
   { path: "/calculator", component: Calculator },
   { path: "/modal", component: Modal },
+  { path: "/chat", component: Chat },
 ];
 const router = createRouter({
   history: createWebHistory(),

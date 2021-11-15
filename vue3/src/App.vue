@@ -27,7 +27,7 @@ export default {
       } else {
         this.isLogined = false;
         this.authUser = {};
-        console.log("no username or password ");
+        console.log("invalid username or password ");
       }
     });
     return unsubscribe;

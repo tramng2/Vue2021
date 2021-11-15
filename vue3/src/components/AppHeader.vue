@@ -17,6 +17,7 @@
     <router-link class="mx-2" to="/slider">Slider</router-link>
     <router-link class="mx-2" to="/calculator">Calculator</router-link>
     <router-link class="mx-2" to="/modal">Modal</router-link>
+    <router-link class="mx-2" to="/chat">Chatbox</router-link>
     <button v-if="!isLoggedIn" @click="$emit('open-login-modal')" class="mx-2">
       Login
     </button>
